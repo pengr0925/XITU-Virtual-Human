@@ -14,4 +14,36 @@
   <li><a href="/files/Storyboard_PromoVideo.xlsx"  download>Storyboard_PromoVideo.xlsx</a><span class="meta">PDF</span></li>
   <!-- 继续按需要添加更多 /files/xxx 的项 -->
 </ul>
+
+<script>
+  // 正确目录
+  const BASE = 'files/校长视频数据/M4ROOT/CLIP/';
+
+  // 你的素材编号（来自截图）
+  const ids = [2867, 2868, 2869, 2870, 2871, 2872];
+
+  const ul = document.getElementById('clip-list');
+
+  // 生成每个编号的 MP4 与对应的 M01.XML
+  ids.forEach(n => {
+    const mp4 = `C${n}.MP4`;
+    const xml = `C${n}M01.XML`;
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <a href="${BASE}${mp4}" download>${mp4}</a>
+      <span class="meta">MP4</span>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="${BASE}${xml}" download>${xml}</a>
+      <span class="meta">XML</span>
+    `;
+    ul.appendChild(li);
+  });
+
+  // 该目录下还有一个 XML：MEDIAPRO.XML（不是 MP4/M01.XML，但属于 XML）
+  const mediaPro = document.createElement('li');
+  mediaPro.innerHTML = `<a href="${BASE}MEDIAPRO.XML" download>MEDIAPRO.XML</a> <span class="meta">XML</span>`;
+  ul.appendChild(mediaPro);
+</script>
+
+
 <p>如果点击所需文件后没有直接下载，请右键“链接另存为…”。</p>
